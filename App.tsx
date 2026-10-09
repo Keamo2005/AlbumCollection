@@ -151,9 +151,9 @@ export default function App() {
       id: Date.now().toString(),
       title: title.trim(),
       artist: artist.trim(),
-      year: Number(year),
+      year: year.trim(),
       genre: genre,
-      rating: Number(rating),
+      rating: rating.trim(),
     };
 
     setAlbums([temporaryAlbum]);
