@@ -167,7 +167,7 @@ export default function App() {
 
   const handleDelete = (id: string) => {
     setAlbums((currentAlbums) =>
-      currentAlbums.filter((album) => album.id === id)
+      currentAlbums.filter((album) => album.id == id)
     );
   };
 
@@ -221,13 +221,13 @@ export default function App() {
 
       <Text style={styles.label}>Genre</Text>
       <Picker
-        selectedValue={title}
+        selectedValue={genre}
         onValueChange={(value) => setGenre(value)}
       >
         <Picker.Item label="Select a genre..." value="" />
 
         {genres.map((item) => (
-	  <Picker.Item key={item} label={item} value={genre} />
+	  <Picker.Item key={item} label={item} value={item} />
 	))}
       </Picker>
 
