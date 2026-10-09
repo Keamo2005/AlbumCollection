@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 // npx expo install @expo/ui
-import { Picker } from '@expo/ui/community/picker';
+import { Picker } from '@react-native-picker/picker';
 
 type Album = {
   id: string;
