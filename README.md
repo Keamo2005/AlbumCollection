@@ -32,9 +32,14 @@ The application was debugged, optimized, and tested using the following software
 
 Below is the breakdown of the syntax issues, component bugs, and logic errors discovered in the original codebase, along with explaining what was wrong and how it was corrected:
 
-- Changed import to <expo/ui/community> 
-- 
-- 
+- Changed import to <expo/ui/community>
+- Used `&&` operator| Logic Error | Updated to use the logical `||` operator.
+- Missing maximum validation checking variables| Logic Error | Implemented `numericYear > currentYear` and `numericRating > MAX_RATING` .
+- Entries overwrote active memory collections | Runtime State | Modified methods to use array spread notation (`[...currentAlbums, temporaryAlbum]`).
+- Deleting entries used (`===`) | Logic Error | Inverted the equality condition to  (`album.id !== id`). 
+- Picker assigned `selectedValue` | Data-Binding | Set `selectedValue={genre}` to use `value={item}`. 
+- FlatList  values (`item.title`) | Performance | Reconfigured list to unique structural lookups `item.id`.
+
 ---
 
 ## GitHub and GitHub Actions
@@ -54,12 +59,13 @@ The workflow ensures that my project is automatically built and tested every tim
 
 ## 4. Testing
 
-The corrected application bundle was evaluated inside the BlueStacks 5 emulator runtime via the Expo Go application:
+The application underwent systematic confirmation checking according to the 5 mandatory assessment blocks:
 
-* **Multi-City Testing:** Interactively clicked through the Johannesburg, Cape Town, and Durban selector buttons. Confirmed that active tabs updated theme colors cleanly and that the global dashboard successfully swapped data matrices without memory stalls.
-* **Swipe Testing:** Mouse-drag swipe interactions across the 24-Hour Forecast array.
+- **Initial Launch** The application successfully loaded into the Expo Go environment on the BlueStacks emulator. The startup process was completely clean, generating zero configuration warnings or setup errors.
+- **Valid Album Creation** Submitting a fully completed form passed all data verification checks. The system successfully created the new album entry and immediately cleared the active text fields so the form was ready for the next input.
+- **Managing Multiple Albums** The application handles complex state changes correctly by using proper state spreads. This allows multiple independent album cards to display simultaneously in clean rows without any layout collisions or mixed-up data.
+- **Deletion Functionality** The delete feature safely removes data from the user interface. Clicking the delete element on a specific card instantly removed that entry from the screen while keeping all neighboring cards completely intact.
 
-* **Error** Emojis are cropped out.
 ---
 
 ### App Screenshot:
@@ -70,9 +76,10 @@ The corrected application bundle was evaluated inside the BlueStacks 5 emulator 
 ---
 
 ## 6. Conclusion
-Investigating and refactoring the broken Weather Dashboard code provided key insights into the layout constraints of React Native text rendering, type structures, and framework component states. 
-Resolving the terminal crashes emphasized that React Native enforces a strict validation rule: no text strings or stray characters may exist outside a `<Text>` component container boundary. Furthermore, adjusting the 5-Day Forecast loop maps clarified the syntax difference between component returns using parentheses `()` versus statement blocks using curly braces `{}`. 
-Ultimately, this task demonstrated the importance of development terminal logs to isolate syntax issues and implement target style buffers when deploying applications to mobile emulators.
+
+This debugging task provided practical experience in tracing updates and identifying type mismatches within React Native and TypeScript. 
+Resolving logical check bounds highlighted the importance of boundary constraints, while fixing state mutations reinforced how React handles memory reference tracking to update user interfaces.
+Additionally, navigating management commands inside an institutional VM environment provided valuable experience in deploying cross-platform apps to production-grade mobile emulators.
 
 ---
 
